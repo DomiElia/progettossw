@@ -1,0 +1,12 @@
+
+<p>Titolo:</p>
+<input #nuovoTitolo/>
+<br>
+<p>Testo:</p>
+<input #nuovoTesto/>
+<br>
+<input type="checkbox" name="check" #check />
+<label for="check"> importante</label>
+<br>
+<button (click)="nuovoPost(nuovoTitolo.value, nuovoTesto.value, check.checked);nuovoTitolo.value='';nuovoTesto.value='';check.checked = false">Salva</button>
+

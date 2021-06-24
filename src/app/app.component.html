@@ -1,0 +1,36 @@
+<h1>{{title}}</h1>
+<div *ngIf="vis == false; else Vis">
+  <app-accedi (nuovoKeyEvent)="getKey($event)" (nuovoKEvent)="newKey($event)
+"> </app-accedi>
+</div>
+
+<div *ngIf="vis == true">
+  Chiave identificativa:<b> {{chiave}}</b>
+  <br>
+  <button (click)="logout()" >Logout</button>
+  <h2>{{title2}}</h2>
+
+  <button (click)="important()" *ngIf="ArrayPost.length != 0" id="pulsanteImp">
+    Mostra importanti
+  </button>
+
+  <div *ngIf=" visImp==false ;else altro">
+    <ul *ngFor="let postIt of ArrayPost, index as i">
+      <button (click)="Mostra(i)">{{postIt.titolo}}</button>
+      <button (click) ="Elimina(i)">Elimina</button>
+    </ul>
+  </div>
+
+  <ng-template #altro>
+    <ul *ngFor="let postIt of ArrayPost, index as i">
+      <div *ngIf="postIt.check == true">
+        <button (click)="Mostra(i)">{{postIt.titolo}}</button>
+        <button (click) ="Elimina(i)">Elimina</button>
+      </div>
+    </ul>
+  </ng-template>
+ 
+  <app-visualizza [selezioneA]="selezione" > </app-visualizza> 
+  <h2>{{title3}}</h2>
+  <app-nuovopost (nuovoPostEvent)="Aggiungi($event)"> </app-nuovopost>
+</div>
